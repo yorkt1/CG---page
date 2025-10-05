@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CristãoGoods - Livros de Colorir Cristãos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #e6b325;
+            --dark: #333;
+            --light: #f9f9f9;
+            --gray: #f5f5f5;
+            --white: #fff;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #d4a21f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .desktop-nav ul li {
+            margin-left: 25px;
+        }
+        
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        .desktop-nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(44, 90, 160, 0.1);
+        }
+        
+        .desktop-nav .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Menu Mobile */
+        .mobile-nav {
+            display: none;
+            background-color: var(--white);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 0 20px;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-nav .btn {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        /* Seção Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #3a6bc2 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-image {
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        /* Seção de Tópicos */
+        .features {
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            background-color: var(--light);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Carrossel de Fotos */
+        .gallery {
+            background-color: var(--gray);
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            padding: 10px;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            gap: 15px;
+        }
+        
+        .carousel-control {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .carousel-control:hover {
+            background-color: #1e4a8e;
+            transform: scale(1.1);
+        }
+        
+        .gallery .btn {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            max-width: 200px;
+        }
+        
+        /* Depoimentos */
+        .testimonials {
+            background-color: var(--white);
+        }
+        
+        .testimonials-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-item {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            background-color: var(--primary);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Oferta */
+        .offer {
+            background: linear-gradient(135deg, var(--primary) 0%, #3a6bc2 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .offer-card {
+            background-color: var(--white);
+            color: var(--dark);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .offer-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .offer-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .offer-features li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .offer-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .pricing {
+            margin-bottom: 30px;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            color: #999;
+        }
+        
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .offer .btn {
+            background-color: var(--secondary);
+            font-size: 1.2rem;
+            padding: 18px 40px;
+            width: 100%;
+        }
+        
+        /* Garantia */
+        .guarantee {
+            background-color: var(--gray);
+            text-align: center;
+        }
+        
+        .guarantee-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .guarantee-icon {
+            font-size: 2rem;
+            color: #4CAF50;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .feature-item {
+                padding: 20px 15px;
+            }
+            
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+            
+            .carousel-item img {
+                height: 300px;
+            }
+            
+            .carousel-control {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .offer-card {
+                padding: 30px;
+            }
+            
+            .new-price {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .carousel-item img {
+                height: 250px;
+            }
+            
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .offer-card {
+                padding: 20px;
+            }
+            
+            .offer-title {
+                font-size: 1.4rem;
+            }
+            
+            .new-price {
+                font-size: 1.8rem;
+            }
+            
+            .guarantee-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .guarantee-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Cristão<span>Goods</span></a>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#" class="btn">Comprar</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#" class="btn">Comprar</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>35 Livros de Colorir Cristão – Transforme Momentos Especiais em Família!</h1>
+                <p>Atividades para células, escola dominical e devocional familiar</p>
+                <a href="#" class="btn">Quero meus livros agora</a>
+                
+                <div class="hero-image">
+                    <div class="badge">Acesso Vitalício</div>
+                    <!-- Imagem ilustrativa - substitua pelo link da sua imagem -->
+                    <img src="https://res.cloudinary.com/dqewxdbfx/image/upload/v1759679920/1_dh0nul.webp" alt="Livros de Colorir Cristão">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tópicos com Ícones -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Como Utilizar Nossos Materiais</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Células</h3>
+                    <p>Atividades para grupos pequenos e estudos bíblicos</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3>Escola Dominical</h3>
+                    <p>Conteúdo educativo para crianças e adolescentes</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Devocional Familiar</h3>
+                    <p>Momentos de aprendizado e união em família</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Pedagogia Cristã</h3>
+                    <p>Recursos para educadores cristãos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrossel de Fotos -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Veja alguns exemplos dos nossos materiais</h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <!-- Imagem 1 - substitua pelo link da sua imagem -->
+                        <img src="https://res.cloudinary.com/dqewxdbfx/image/upload/v1759684792/2_u80azy.webp" alt="Exemplo de livro de colorir 1">
+                    </div>
+                    <div class="carousel-item">
+                        <!-- Imagem 2 - substitua pelo link da sua imagem -->
+                        <img src="https://res.cloudinary.com/dqewxdbfx/image/upload/v1759684994/9_qvgqwo.webp" alt="Exemplo de livro de colorir 2">
+                    </div>
+                    <div class="carousel-item">
+                        <!-- Imagem 3 - substitua pelo link da sua imagem -->
+                        <img src="https://res.cloudinary.com/dqewxdbfx/image/upload/v1759685021/6_csfc8w.webp" alt="Exemplo de livro de colorir 3">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <a href="#" class="btn">Comprar agora</a>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-item">
+                    <div class="testimonial-avatar">
+                        MS
+                    </div>
+                    <p class="testimonial-text">"Os livros são incríveis! Minhas crianças adoram e aprendem muito com as histórias bíblicas. Recomendo para todas as famílias cristãs!"</p>
+                    <p class="testimonial-author">Maria Silva</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta -->
+    <section class="offer">
+        <div class="container">
+            <div class="offer-card">
+                <h2 class="offer-title">Pacote Completo de Livros de Colorir</h2>
+                
+                <ul class="offer-features">
+                    <li>✅ 35 livros de colorir cristão</li>
+                    <li>✅ Temas bíblicos exclusivos</li>
+                    <li>✅ Acesso vitalício</li>
+                    <li>✅ Suporte via WhatsApp</li>
+                </ul>
+                
+                <div class="pricing">
+                    <span class="old-price">R$ 20</span>
+                    <div class="new-price">R$ 15</div>
+                    <p>desconto especial por tempo limitado</p>
+                </div>
+                
+                <a href="#" class="btn">Comprar agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Você tem 7 dias de garantia</h3>
+                        <p>Se não gostar, devolvemos seu dinheiro</p>
+                    </div>
+                </div>
+                
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3>Pagamento 100% seguro</h3>
+                        <p>SSL protegido - seus dados estão seguros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">CristãoGoods</div>
+                    <p>Recursos cristãos para famílias e igrejas</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 CristãoGoods – Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar em um link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                });
+            });
+            
+            // Script para o carrossel
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevButton = document.querySelector('.carousel-control.prev');
+            const nextButton = document.querySelector('.carousel-control.next');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            prevButton.addEventListener('click', function() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
+                updateCarousel();
+            });
+            
+            nextButton.addEventListener('click', function() {
+                currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            
+            // Auto-rotate carousel
+            setInterval(function() {
+                currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

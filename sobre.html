@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - CristãoGoods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #e6b325;
+            --dark: #333;
+            --light: #f9f9f9;
+            --gray: #f5f5f5;
+            --white: #fff;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #d4a21f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .desktop-nav ul li {
+            margin-left: 25px;
+        }
+        
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        .desktop-nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(44, 90, 160, 0.1);
+        }
+        
+        .desktop-nav .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Menu Mobile */
+        .mobile-nav {
+            display: none;
+            background-color: var(--white);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 0 20px;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+        
+        .mobile-nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-nav .btn {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--gray);
+            padding: 15px 0;
+            margin-bottom: 40px;
+        }
+        
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            color: var(--dark);
+        }
+        
+        /* Hero Sobre */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #3a6bc2 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .about-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Missão, Visão, Valores */
+        .mission-vision {
+            background-color: var(--white);
+        }
+        
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .mv-item {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: transform 0.3s;
+        }
+        
+        .mv-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mv-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .mv-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Nossa História */
+        .history {
+            background-color: var(--gray);
+        }
+        
+        .history-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .history-text {
+            flex: 1;
+        }
+        
+        .history-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .history-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Equipe */
+        .team {
+            background-color: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .member-role {
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Por que escolher */
+        .why-choose {
+            background-color: var(--gray);
+        }
+        
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .reason-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .reason-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .reason-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* CTA Final */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #3a6bc2 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .final-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .history-content {
+                flex-direction: column;
+            }
+            
+            .history-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .about-hero {
+                padding: 60px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .mv-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .reasons-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .final-cta {
+                padding: 60px 0;
+            }
+            
+            .final-cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 50px 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 30px;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .mv-item {
+                padding: 20px 15px;
+            }
+            
+            .reason-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .final-cta h2 {
+                font-size: 1.5rem;
+            }
+            
+            .final-cta p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Cristão<span>Goods</span></a>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html" class="active">Sobre</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="comprar.html" class="btn">Comprar</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="comprar.html" class="btn">Comprar</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <a href="index.html">Início</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Sobre Nós</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Sobre -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <h1>Conheça a CristãoGoods</h1>
+                <p>Mais do que produtos, oferecemos recursos para fortalecer a fé e unir famílias através da criatividade e da Palavra de Deus.</p>
+                <a href="#missao" class="btn">Conheça Nossa Missão</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missão, Visão, Valores -->
+    <section class="mission-vision" id="missao">
+        <div class="container">
+            <h2 class="section-title">Nossa Essência</h2>
+            <div class="mv-grid">
+                <div class="mv-item">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Missão</h3>
+                    <p>Criar recursos cristãos criativos e acessíveis que fortaleçam a fé, promovam o aprendizado bíblico e unam famílias em momentos significativos de comunhão com Deus.</p>
+                </div>
+                
+                <div class="mv-item">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visão</h3>
+                    <p>Ser a principal referência em materiais criativos cristãos no Brasil, impactando positivamente a vida de milhares de famílias, igrejas e comunidades através de recursos inovadores e biblicamente fundamentados.</p>
+                </div>
+                
+                <div class="mv-item">
+                    <div class="mv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Valores</h3>
+                    <p>Fé em Cristo, excelência, criatividade, acessibilidade, integridade e serviço. Acreditamos que cada produto deve refletir o amor de Deus e edificar a comunidade cristã.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa História -->
+    <section class="history">
+        <div class="container">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="history-content">
+                <div class="history-text">
+                    <p>A CristãoGoods nasceu em 2020, quando nossa fundadora, Ana Silva, percebeu a necessidade de recursos criativos e acessíveis para o ensino bíblico infantil. Como mãe e educadora cristã, ela notou que faltavam materiais que unissem diversão, aprendizado e fundamentação bíblica.</p>
+                    <p>Começamos com apenas 5 livros de colorir, criados manualmente e distribuídos para amigos e familiares. O feedback foi tão positivo que decidimos expandir nosso alcance.</p>
+                    <p>Hoje, orgulhamo-nos de ter uma coleção de 35 livros de colorir cristãos, utilizados por milhares de famílias, escolas dominicais e grupos de células em todo o Brasil. Nossa equipe cresceu, mas mantemos o mesmo compromisso: oferecer produtos de qualidade que honrem a Deus e abençoem vidas.</p>
+                    <p>A cada livro criado, lembramos que nosso trabalho não é apenas sobre colorir, mas sobre plantar a semente do Evangelho nos corações das crianças e fortalecer os laços familiares através da Palavra de Deus.</p>
+                </div>
+                <div class="history-image">
+                    <!-- Imagem ilustrativa - substitua pelo link da sua imagem -->
+                    <img src="https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Nossa História">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        AS
+                    </div>
+                    <h3 class="member-name">Ana Silva</h3>
+                    <p class="member-role">Fundadora & Diretora Criativa</p>
+                    <p>Pedagoga e mãe de dois, Ana combina sua paixão pelo ensino com a criatividade para desenvolver nossos materiais.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        CP
+                    </div>
+                    <h3 class="member-name">Carlos Pereira</h3>
+                    <p class="member-role">Ilustrador Principal</p>
+                    <p>Com formação em artes visuais e uma fé profunda, Carlos dá vida às histórias bíblicas através de suas ilustrações.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        MR
+                    </div>
+                    <h3 class="member-name">Mariana Rodrigues</h3>
+                    <p class="member-role">Consultora Teológica</p>
+                    <p>Teóloga e educadora, Mariana garante que todos os nossos conteúdos sejam biblicamente precisos e pedagogicamente adequados.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        FS
+                    </div>
+                    <h3 class="member-name">Fernando Santos</h3>
+                    <p class="member-role">Gerente de Comunidade</p>
+                    <p>Fernando conecta-se com nossos clientes, entendendo suas necessidades e garantindo a melhor experiência possível.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que escolher -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Por Que Escolher a CristãoGoods?</h2>
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Conteúdo Biblicamente Fundamentado</h3>
+                        <p>Todos os nossos materiais passam por uma rigorosa revisão teológica para garantir precisão bíblica e adequação doutrinária.</p>
+                    </div>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Design Profissional e Atraente</h3>
+                        <p>Nossas ilustraciones são criadas por profissionais qualificados, garantindo produtos visualmente atrativos e de alta qualidade.</p>
+                    </div>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Compromisso com a Excelência</h3>
+                        <p>Nos dedicamos a oferecer os melhores produtos e atendimento, sempre visando superar as expectativas de nossos clientes.</p>
+                    </div>
+                </div>
+                
+                <div class="reason-item">
+                    <div class="reason-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="reason-content">
+                        <h3>Comunidade Ativa</h3>
+                        <p>Fazemos parte de uma comunidade vibrante de pais, educadores e líderes cristãos que compartilham ideias e experiências.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Junte-se a Milhares de Famílias</h2>
+            <p>Descubra como nossos recursos podem transformar os momentos em família e fortalecer a fé das crianças através da criatividade e da Palavra de Deus.</p>
+            <a href="index.html" class="btn">Conhecer Nossos Produtos</a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">CristãoGoods</div>
+                    <p>Recursos cristãos para famílias e igrejas</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="politica-privacidade.html">Política de Privacidade</a>
+                    <a href="termos-uso.html">Termos de Uso</a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/554891714449?text=Olá,%20tenho%20interesse%20em%20comprar%20os%2035%20livros%20CristãoGoods
+"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/cristaogoods"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 CristãoGoods – Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileMenu.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar em um link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
